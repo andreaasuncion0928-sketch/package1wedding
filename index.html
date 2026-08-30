@@ -5,1242 +5,1071 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Elena & Adrian — Essential Wedding Invitation</title>
   
-  <!-- Typography -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600&family=Poppins:wght@300;400;500;600;700&family=Allura&display=swap" rel="stylesheet">
 
   <style>
     /* ==========================================================================
-       1. DESIGN SYSTEM & CSS VARIABLES (Soft Editorial Lavender)
+       1. PACKAGE 1 DESIGN SYSTEM: PURPLE & BLACK PALETTE
        ========================================================================== */
+    @font-face {
+      font-family: 'Brittany';
+      src: local('Brittany Signature'), local('BrittanySignature');
+    }
+
     :root {
-      /* Palette */
-      --primary: #211C27;        /* Deep Warm Slate with a hint of plum */
-      --secondary: #F8F6FA;      /* Soft Alabaster with a touch of lavender */
-      --text: #36303D;           /* Muted charcoal for soft readability */
-      --text-muted: #797182;     /* Subtle dusty violet-gray */
-      --accent: #9A84A1;         /* Refined, elegant Muted Lavender */
-      --border: #E8E2EC;         /* Delicate lavender-tinted border */
-      --card-bg: #FFFFFF;        /* Pure White for crisp contrast */
+      /* Package 1 Color Palette */
+      --deep-purple: #1A0B2E;
+      --medium-purple: #2A1245;
+      --plum-accent: #4A1E6D;
+      --royal-purple: #6B2D83;
+      --light-purple: #F3EDF8;
+      --lavender-border: #D8C3E5;
+      
+      --black: #0B0A0D;
+      --pure-black: #000000;
+      --dark-gray: #222225;
+      --text-muted: #8A8194;
       --white: #FFFFFF;
+      
+      --font-serif: 'Didot', 'Bodoni MT', 'Cormorant Garamond', serif;
+      --font-sans: 'Poppins', sans-serif;
+      --font-script: 'Brittany', 'Allura', cursive;
 
-      /* Fonts */
-      --font-heading: 'Cormorant Garamond', Georgia, serif;
-      --font-body: 'Poppins', sans-serif;
-      --font-script: 'Allura', cursive;
-
-      /* Layout */
-      --container-max: 1100px;
-      --container-narrow: 780px;
-      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-smooth: cubic-bezier(0.25, 1, 0.35, 1);
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
     html {
       scroll-behavior: smooth;
-      font-size: 16px;
     }
 
     body {
-      background-color: var(--secondary);
-      color: var(--text);
-      font-family: var(--font-body);
+      background-color: var(--black);
+      color: var(--light-purple);
+      font-family: var(--font-sans);
       line-height: 1.8;
       overflow-x: hidden;
-      -webkit-font-smoothing: antialiased;
+      width: 100%;
     }
 
-    /* Typography Utilities */
-    h1, h2, h3, h4, .serif {
-      font-family: var(--font-heading);
-      font-weight: 400;
-      line-height: 1.2;
-      color: var(--primary);
+    h1, h2, h3, h4, .serif { font-family: var(--font-serif); font-weight: 400; }
+    .script { font-family: var(--font-script); font-size: 2.5rem; color: var(--light-purple); font-weight: normal; }
+    
+    a { color: inherit; text-decoration: none; cursor: pointer; transition: all 0.3s var(--ease-smooth); }
+    button { font-family: var(--font-sans); cursor: pointer; border: none; background: none; outline: none; }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(15px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    .script {
-      font-family: var(--font-script);
-      font-size: 2.2rem;
-      color: var(--accent);
-      font-weight: normal;
+    @keyframes floatLight {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-5px); }
     }
 
-    .eyebrow {
-      font-size: 0.75rem;
-      letter-spacing: 4px;
-      text-transform: uppercase;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 0.75rem;
-      display: block;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3.2rem);
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 1rem;
-    }
-
-    .section-subtitle {
-      font-family: var(--font-heading);
-      font-style: italic;
-      font-size: 1.25rem;
-      color: var(--text-muted);
-      margin-bottom: 3rem;
-    }
-
-    p {
-      font-size: 0.95rem;
-      color: var(--text-muted);
-      font-weight: 300;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-      transition: var(--transition);
-    }
-
-    button {
-      font-family: var(--font-body);
-      cursor: pointer;
-      border: none;
-      background: none;
-      outline: none;
-    }
-
-    /* Container */
-    .container {
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .container-narrow {
-      max-width: var(--container-narrow);
-      margin: 0 auto;
-      padding: 0 1.5rem;
-    }
-
-    .text-center { text-align: center; }
-
-    /* Component: Buttons */
-    .btn {
-      display: inline-block;
-      padding: 1rem 2.5rem;
-      background-color: var(--primary);
-      color: var(--white);
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      border: 1px solid var(--primary);
-      transition: var(--transition);
-      border-radius: 0px;
-    }
-
-    .btn:hover {
-      background-color: transparent;
-      color: var(--primary);
-    }
-
-    .btn-outline {
-      background-color: transparent;
-      color: var(--primary);
-      border: 1px solid var(--border);
-      padding: 0.6rem 1.4rem;
-      font-size: 0.7rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .btn-outline:hover {
-      background-color: var(--primary);
-      color: var(--white);
-      border-color: var(--primary);
-    }
-
-    /* Animations: Standard Scroll Reveal */
-    .reveal {
+    .reveal-on-scroll {
       opacity: 0;
-      transform: translateY(30px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+      transform: translateY(20px);
+      transition: opacity 0.8s var(--ease-smooth), transform 0.8s var(--ease-smooth);
+      will-change: opacity, transform;
     }
 
-    .reveal.active {
+    .reveal-on-scroll.is-revealed {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Section Spacing */
-    section {
-      padding: 6rem 0;
+    /* ==========================================================================
+       2. CONTAINERS & BUTTONS
+       ========================================================================== */
+    .screen {
+      display: none;
+      min-height: 100vh;
+      background-color: var(--deep-purple);
+      animation: fadeIn 0.6s var(--ease-smooth) forwards;
+      width: 100%;
+    }
+    
+    .screen.active {
+      display: block;
+    }
+
+    .container { 
+      max-width: 850px; 
+      margin: 0 auto; 
+      padding: 3.5rem 1.25rem 4rem; 
+      position: relative; 
+      z-index: 1;
+      width: 100%;
+    }
+    .text-center { text-align: center; }
+
+    .btn {
+      display: inline-block;
+      padding: 0.9rem 2.5rem;
+      background-color: var(--plum-accent);
+      color: var(--white);
+      font-size: 10px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      border: 1px solid var(--royal-purple);
       position: relative;
+      overflow: hidden;
+      z-index: 1;
+      max-width: 100%;
+      border-radius: 2px;
+      transition: all 0.3s var(--ease-smooth);
     }
 
-    .divider {
-      height: 1px;
-      width: 80px;
-      background-color: var(--accent);
-      margin: 0 auto 3rem;
-      opacity: 0.5;
+    .btn:hover {
+      background-color: var(--royal-purple);
+      border-color: var(--light-purple);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(107, 45, 131, 0.4);
     }
 
-    /* Music Floating Toggle */
-    .music-toggle {
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 3rem;
+      padding: 0.75rem 2rem;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--light-purple);
+      background: rgba(11, 10, 13, 0.6);
+      border: 1px solid var(--plum-accent);
+      border-radius: 30px;
+      position: relative;
+      z-index: 10;
+      max-width: 100%;
+      transition: all 0.3s var(--ease-smooth);
+    }
+    
+    .back-btn:hover {
+      color: var(--white);
+      background: var(--plum-accent);
+      border-color: var(--royal-purple);
+      transform: translateY(-2px);
+    }
+
+    /* Floating Music Control Bar */
+    .music-control {
       position: fixed;
       bottom: 20px;
       right: 20px;
       z-index: 1000;
-      background: var(--white);
-      border: 1px solid var(--border);
-      width: 44px;
-      height: 44px;
-      border-radius: 50%;
+      background: rgba(11, 10, 13, 0.85);
+      border: 1px solid var(--plum-accent);
+      border-radius: 25px;
+      padding: 8px 16px;
       display: flex;
       align-items: center;
-      justify-content: center;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
-      transition: var(--transition);
+      gap: 8px;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--light-purple);
+      backdrop-filter: blur(8px);
     }
 
-    .music-toggle:hover {
-      transform: scale(1.05);
-    }
-
-    .music-toggle svg {
-      width: 18px;
-      height: 18px;
-      fill: var(--primary);
+    .music-btn {
+      color: var(--white);
+      font-size: 12px;
     }
 
     /* ==========================================================================
-       2. HERO / COVER SECTION (Strict Package 1: Minimal Solid Layout)
+       3. COVER SCREEN (ONLY SECTION WITH PHOTO BACKGROUND)
        ========================================================================== */
-    #hero {
-      min-height: 85vh;
-      padding: 4rem 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    #screen-cover {
+      background-color: var(--black);
       position: relative;
-      background-color: var(--secondary);
-      border-bottom: 1px solid var(--border);
+      overflow: hidden;
     }
 
-    .hero-box {
-      border: 1px solid var(--border);
-      background: var(--white);
-      padding: 5rem 3rem;
-      max-width: 750px;
-      width: 100%;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+    .cover-image {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('cover.jpeg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.55;
+      z-index: 1;
     }
 
-    .hero-eyebrow {
-      font-size: 0.8rem;
+    .cover-overlay {
+      position: absolute; top: 0; left: 0; width: 100%; height: 100%;
+      background: linear-gradient(180deg, rgba(11, 10, 13, 0.4) 0%, rgba(26, 11, 46, 0.75) 100%);
+      z-index: 2;
+    }
+
+    .cover-content {
+      position: relative; z-index: 3; display: flex; flex-direction: column; align-items: center; 
+      justify-content: center; text-align: center; min-height: 100vh; padding: 4rem 1.25rem; color: var(--white);
+    }
+
+    .cover-subtitle {
+      font-size: clamp(9px, 1.5vw, 11px);
       letter-spacing: 6px;
+      color: var(--lavender-border);
       text-transform: uppercase;
-      color: var(--accent);
-      margin-bottom: 1.5rem;
-      font-weight: 500;
+      font-weight: 300;
+      margin-bottom: 1.8rem;
+      animation: floatLight 4s infinite ease-in-out;
     }
 
-    .hero-title {
-      font-size: clamp(2.8rem, 6vw, 4.8rem);
-      color: var(--primary);
+    .cover-names { 
+      font-family: var(--font-serif); 
+      font-size: clamp(36px, 7vw, 84px); 
+      line-height: 1.1; 
+      color: var(--white); 
+      margin-bottom: 1.5rem; 
+      font-weight: 300;
       letter-spacing: 4px;
       text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      font-weight: 300;
     }
 
-    .hero-details {
-      font-size: clamp(0.85rem, 1.5vw, 1rem);
-      letter-spacing: 4px;
-      color: var(--text-muted);
-      text-transform: uppercase;
-      margin-bottom: 3.5rem;
-      font-weight: 300;
+    .cover-date { 
+      font-size: clamp(10px, 1.8vw, 12px); 
+      letter-spacing: 5px; 
+      color: var(--light-purple); 
+      text-transform: uppercase; 
+      margin-bottom: 3.5rem; 
+      font-weight: 300; 
     }
 
     /* ==========================================================================
-       3. COUNTDOWN SECTION
+       4. MENU / WELCOME SCREEN & SOLID-COLOR COUNTDOWN
        ========================================================================== */
-    #countdown {
-      background-color: var(--white);
-      padding: 4rem 0;
-      border-bottom: 1px solid var(--border);
+    #screen-menu { 
+      background-color: var(--black); 
+      border-top: 1px solid var(--plum-accent);
     }
 
-    .countdown-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
+    .countdown-card {
+      background: var(--deep-purple);
+      border: 1px solid var(--plum-accent);
+      border-radius: 8px;
+      padding: 2rem 1rem;
+      margin-bottom: 2.5rem;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    }
+
+    .countdown-display {
+      display: flex;
+      justify-content: center;
       gap: 1.5rem;
-      max-width: 600px;
-      margin: 0 auto;
+      margin-top: 1rem;
     }
 
-    .countdown-item {
-      text-align: center;
+    .count-unit {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
 
-    .countdown-number {
-      font-family: var(--font-heading);
-      font-size: clamp(2.5rem, 5vw, 3.8rem);
-      color: var(--primary);
+    .count-num {
+      font-family: var(--font-serif);
+      font-size: clamp(28px, 6vw, 48px);
+      color: var(--white);
       line-height: 1;
-      margin-bottom: 0.3rem;
     }
 
-    .countdown-label {
-      font-size: 0.65rem;
-      letter-spacing: 3px;
+    .count-label {
+      font-size: 9px;
+      letter-spacing: 2px;
+      color: var(--lavender-border);
       text-transform: uppercase;
-      color: var(--text-muted);
+      margin-top: 0.4rem;
     }
+
+    .menu-header { margin-bottom: 2.5rem; text-align: center; }
+    .menu-header h2 { font-size: clamp(1.6rem, 3.5vw, 2.2rem); letter-spacing: 4px; color: var(--white); text-transform: uppercase; font-weight: 300; }
+    .menu-header p { font-size: 11px; letter-spacing: 4px; color: var(--lavender-border); text-transform: uppercase; margin-top: 0.4rem;}
+
+    .elegant-menu { display: flex; flex-direction: column; max-width: 520px; margin: 0 auto; width: 100%; }
+    
+    .elegant-item { 
+      display: flex; align-items: center; justify-content: space-between; 
+      padding: 1.25rem 1rem; 
+      background: var(--deep-purple);
+      border: 1px solid var(--medium-purple);
+      border-radius: 4px;
+      margin-bottom: 0.8rem;
+      cursor: pointer; 
+      transition: all 0.3s var(--ease-smooth); 
+      text-align: left;
+    }
+
+    .elegant-item:hover { 
+      background: var(--medium-purple); 
+      border-color: var(--royal-purple);
+      transform: translateX(4px); 
+    }
+    
+    .ei-title { font-family: var(--font-serif); font-size: clamp(16px, 3vw, 20px); letter-spacing: 2px; text-transform: uppercase; color: var(--white); }
+    .ei-desc { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; color: var(--text-muted); }
+    .ei-arrow { font-size: 14px; color: var(--royal-purple); transition: transform 0.3s var(--ease-smooth); }
+    .elegant-item:hover .ei-arrow { color: var(--white); transform: translateX(4px); }
 
     /* ==========================================================================
-       4. OUR STORY
+       5. OUR STORY SCREEN (TEXT + STANDARD IMAGE LAYOUT)
        ========================================================================== */
-    #our-story {
-      background-color: var(--secondary);
+    #screen-story {
+      background-color: var(--deep-purple);
     }
 
-    .story-card {
-      background: var(--white);
-      padding: 4rem 3rem;
-      border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
-      text-align: center;
-    }
-
-    .story-body {
-      margin-top: 1.5rem;
-    }
-
-    .story-body p {
-      margin-bottom: 1.5rem;
-      font-size: 1rem;
-      line-height: 1.9;
-    }
-
-    /* ==========================================================================
-       5. THE DAY / WEDDING DETAILS
-       ========================================================================== */
-    #details {
-      background-color: var(--white);
-    }
-
-    .venues-grid {
+    .story-images-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
-      gap: 2.5rem;
-      margin-top: 2rem;
+      gap: 1rem;
+      margin: 2.5rem 0;
+    }
+
+    .story-img-card {
+      width: 100%;
+      height: 240px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--plum-accent);
+    }
+
+    .story-text-block {
+      max-width: 650px;
+      margin: 0 auto;
+      font-family: var(--font-serif);
+      font-size: clamp(15px, 3vw, 18px);
+      color: var(--light-purple);
+      line-height: 1.8;
+      text-align: center;
+    }
+
+    .story-text-block p { margin-bottom: 1.5rem; }
+
+    /* ==========================================================================
+       6. THE DAY SCREEN (PROGRAM & VENUES)
+       ========================================================================== */
+    #screen-day {
+      background-color: var(--black);
+    }
+
+    .section-title {
+      font-family: var(--font-serif);
+      font-size: clamp(24px, 5vw, 38px);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--white);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: var(--lavender-border);
+      text-transform: uppercase;
+      margin-bottom: 2.5rem;
+    }
+
+    .venue-cards-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin-bottom: 3rem;
     }
 
     .venue-card {
-      background: var(--secondary);
-      border: 1px solid var(--border);
-      overflow: hidden;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .venue-img-wrap {
-      width: 100%;
-      height: 240px;
-      overflow: hidden;
-    }
-
-    .venue-img-wrap img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-    }
-
-    .venue-card:hover .venue-img-wrap img {
-      transform: scale(1.04);
-    }
-
-    .venue-info {
-      padding: 2.5rem 2rem;
+      background: var(--deep-purple);
+      border: 1px solid var(--plum-accent);
+      border-radius: 6px;
+      padding: 2rem 1.25rem;
       text-align: center;
-      flex-grow: 1;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
+      transition: border-color 0.3s;
     }
 
-    .venue-type {
-      font-size: 0.7rem;
+    .venue-card:hover {
+      border-color: var(--royal-purple);
+    }
+
+    .venue-tag {
+      font-size: 9px;
       letter-spacing: 3px;
-      color: var(--accent);
+      color: var(--lavender-border);
       text-transform: uppercase;
       margin-bottom: 0.5rem;
     }
 
     .venue-name {
-      font-size: 1.8rem;
-      margin-bottom: 0.5rem;
+      font-size: clamp(18px, 3.5vw, 22px);
+      color: var(--white);
+      margin-bottom: 0.8rem;
     }
 
-    .venue-meta {
-      font-size: 0.85rem;
+    .venue-info {
+      font-size: 11px;
       color: var(--text-muted);
-      margin-bottom: 1.5rem;
+      margin-bottom: 1.2rem;
+      line-height: 1.6;
     }
 
-    .venue-desc {
-      font-size: 0.9rem;
-      margin-bottom: 2rem;
+    .map-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      font-size: 9px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--light-purple);
+      border: 1px solid var(--plum-accent);
+      border-radius: 2px;
+      background: var(--medium-purple);
     }
 
-    /* ==========================================================================
-       6. SCHEDULE / TIMELINE
-       ========================================================================== */
-    #schedule {
-      background-color: var(--secondary);
+    .map-btn:hover {
+      background: var(--plum-accent);
+      color: var(--white);
     }
 
-    .timeline {
-      position: relative;
-      max-width: 650px;
+    /* Simple Clean Timeline */
+    .simple-timeline {
+      max-width: 600px;
       margin: 0 auto;
-      padding: 1rem 0;
-    }
-
-    .timeline::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      bottom: 0;
-      left: 50%;
-      width: 1px;
-      background: var(--border);
-      transform: translateX(-50%);
+      border-left: 2px solid var(--plum-accent);
+      padding-left: 1.5rem;
+      text-align: left;
     }
 
     .timeline-item {
       position: relative;
-      margin-bottom: 2.5rem;
-      width: 100%;
-      display: flex;
+      margin-bottom: 2rem;
     }
 
-    .timeline-item:nth-child(odd) {
-      justify-content: flex-start;
-    }
-
-    .timeline-item:nth-child(even) {
-      justify-content: flex-end;
-    }
-
-    .timeline-content {
-      width: 45%;
-      background: var(--white);
-      padding: 1.5rem;
-      border: 1px solid var(--border);
-      position: relative;
-    }
-
-    .timeline-item:nth-child(odd) .timeline-content {
-      text-align: right;
-    }
-
-    .timeline-item:nth-child(even) .timeline-content {
-      text-align: left;
-    }
-
-    .timeline-dot {
+    .timeline-item::before {
+      content: '';
       position: absolute;
-      top: 20px;
-      left: 50%;
-      width: 9px;
-      height: 9px;
-      background: var(--accent);
+      left: -1.85rem;
+      top: 6px;
+      width: 10px;
+      height: 10px;
       border-radius: 50%;
-      transform: translateX(-50%);
-      z-index: 2;
+      background: var(--royal-purple);
+      border: 2px solid var(--black);
     }
 
     .timeline-time {
-      font-size: 0.75rem;
+      font-size: 10px;
       letter-spacing: 2px;
-      color: var(--accent);
-      font-weight: 500;
-      margin-bottom: 0.2rem;
+      color: var(--lavender-border);
+      font-weight: 600;
     }
 
-    .timeline-title {
-      font-size: 1.25rem;
-      margin-bottom: 0.4rem;
+    .timeline-event {
+      font-family: var(--font-serif);
+      font-size: 18px;
+      color: var(--white);
+      margin: 0.2rem 0;
     }
 
     .timeline-desc {
-      font-size: 0.85rem;
+      font-size: 11px;
       color: var(--text-muted);
-      line-height: 1.5;
     }
 
     /* ==========================================================================
-       7. ENTOURAGE
+       7. DETAILS & ENTOURAGE SCREEN
        ========================================================================== */
-    #entourage {
-      background-color: var(--white);
-    }
-
-    .entourage-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 3rem 2rem;
-      margin-top: 1rem;
+    #screen-details {
+      background-color: var(--deep-purple);
     }
 
     .entourage-group {
-      text-align: center;
+      margin-bottom: 2.5rem;
+      background: var(--black);
+      border: 1px solid var(--medium-purple);
+      border-radius: 6px;
+      padding: 2rem 1.5rem;
     }
 
     .entourage-role {
-      font-size: 0.75rem;
+      font-size: 10px;
       letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--accent);
+      color: var(--lavender-border);
       margin-bottom: 1rem;
-      font-weight: 500;
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--medium-purple);
       padding-bottom: 0.5rem;
-      display: inline-block;
     }
 
-    .entourage-name {
-      font-family: var(--font-heading);
-      font-size: 1.35rem;
-      color: var(--primary);
-      margin-bottom: 0.2rem;
-    }
-
-    /* ==========================================================================
-       8. GALLERY
-       ========================================================================== */
-    #gallery {
-      background-color: var(--secondary);
-    }
-
-    .gallery-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 1.25rem;
-    }
-
-    .gallery-item {
-      position: relative;
-      overflow: hidden;
-      background: var(--border);
-      aspect-ratio: 4/5;
-    }
-
-    .gallery-item img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.6s ease;
-      display: block;
-    }
-
-    .gallery-item:hover img {
-      transform: scale(1.05);
-    }
-
-    /* ==========================================================================
-       9. DRESS CODE & DETAILS
-       ========================================================================== */
-    #dress-code {
-      background-color: var(--white);
+    .entourage-names {
+      font-family: var(--font-serif);
+      font-size: 16px;
+      color: var(--white);
+      line-height: 1.8;
     }
 
     .details-box {
-      background: var(--secondary);
-      border: 1px solid var(--border);
-      padding: 3.5rem 2.5rem;
-      text-align: center;
-    }
-
-    .dress-grid {
-      display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    .dress-card h4 {
-      font-size: 1.2rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-      margin-bottom: 0.5rem;
-    }
-
-    /* FAQ Accordion */
-    .faq-wrapper {
-      margin-top: 3rem;
+      background: var(--medium-purple);
+      border: 1px solid var(--plum-accent);
+      border-radius: 6px;
+      padding: 2rem;
+      margin-bottom: 1.5rem;
       text-align: left;
     }
 
+    .details-box h3 {
+      color: var(--white);
+      font-size: 20px;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid var(--plum-accent);
+      padding-bottom: 0.4rem;
+    }
+
+    .details-box p {
+      font-size: 12px;
+      color: var(--light-purple);
+      line-height: 1.7;
+    }
+
+    .bank-details {
+      background: var(--black);
+      padding: 1rem;
+      border-radius: 4px;
+      margin-top: 1rem;
+      font-family: monospace;
+      font-size: 11px;
+      color: var(--lavender-border);
+    }
+
+    /* Collapsible FAQ */
     .faq-item {
-      border-bottom: 1px solid var(--border);
+      border-bottom: 1px solid var(--medium-purple);
+      padding: 1rem 0;
+      text-align: left;
     }
 
-    .faq-btn {
+    .faq-q {
       width: 100%;
-      padding: 1.25rem 0;
       text-align: left;
-      font-family: var(--font-heading);
-      font-size: 1.25rem;
-      color: var(--primary);
+      font-family: var(--font-serif);
+      font-size: 16px;
+      color: var(--white);
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .faq-btn span {
-      font-family: var(--font-body);
-      font-size: 1.2rem;
-      color: var(--accent);
-      transition: transform 0.3s ease;
+    .faq-a {
+      display: none;
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 0.5rem;
+      line-height: 1.6;
     }
 
-    .faq-item.active .faq-btn span {
-      transform: rotate(45deg);
-    }
-
-    .faq-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.4s ease, padding 0.4s ease;
-    }
-
-    .faq-item.active .faq-content {
-      max-height: 200px;
-      padding-bottom: 1.25rem;
+    .faq-item.open .faq-a {
+      display: block;
     }
 
     /* ==========================================================================
-       10. GIFTS / REGISTRY
+       8. GALLERY SCREEN (PACKAGE 1 SIMPLE GRID - MAX 10 PHOTOS)
        ========================================================================== */
-    #gifts {
-      background-color: var(--secondary);
+    #screen-gallery {
+      background-color: var(--black);
     }
 
-    .gifts-card {
-      background: var(--white);
-      border: 1px solid var(--border);
-      padding: 3.5rem 2rem;
-      text-align: center;
+    .simple-gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+      margin-top: 2rem;
+    }
+
+    .gallery-thumb {
+      width: 100%;
+      height: 220px;
+      object-fit: cover;
+      border-radius: 4px;
+      border: 1px solid var(--medium-purple);
+      transition: transform 0.3s var(--ease-smooth), border-color 0.3s;
+    }
+
+    .gallery-thumb:hover {
+      transform: scale(1.02);
+      border-color: var(--royal-purple);
     }
 
     /* ==========================================================================
-       11. RSVP
+       9. RSVP SCREEN
        ========================================================================== */
-    #rsvp {
-      background-color: var(--white);
+    #screen-rsvp {
+      background-color: var(--deep-purple);
     }
 
-    .rsvp-form-container {
-      background: var(--secondary);
-      border: 1px solid var(--border);
-      padding: 3.5rem 2.5rem;
+    .rsvp-form {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: left;
+      background: var(--black);
+      padding: 2.5rem 1.8rem;
+      border-radius: 8px;
+      border: 1px solid var(--plum-accent);
     }
 
     .form-group {
       margin-bottom: 1.5rem;
-      text-align: left;
     }
 
     .form-group label {
       display: block;
-      font-size: 0.75rem;
+      font-size: 10px;
       letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--text-muted);
-      margin-bottom: 0.5rem;
-      font-weight: 500;
+      color: var(--lavender-border);
+      margin-bottom: 0.4rem;
     }
 
-    .form-control {
+    .form-group input, .form-group select {
       width: 100%;
-      padding: 0.9rem 1rem;
-      border: 1px solid var(--border);
-      background: var(--white);
-      font-family: var(--font-body);
-      font-size: 0.9rem;
-      color: var(--primary);
+      padding: 0.8rem;
+      border: 1px solid var(--medium-purple);
+      background: var(--deep-purple);
+      font-family: var(--font-sans);
+      font-size: 12px;
+      color: var(--white);
+      border-radius: 4px;
       outline: none;
-      transition: var(--transition);
     }
 
-    .form-control:focus {
-      border-color: var(--primary);
-    }
-
-    select.form-control {
-      appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%20211C27' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-      background-repeat: no-repeat;
-      background-position: right 1rem center;
-      background-size: 1em;
+    .form-group input:focus, .form-group select:focus {
+      border-color: var(--royal-purple);
     }
 
     .rsvp-success {
       display: none;
-      text-align: center;
-      padding: 2rem 0;
+      background: var(--black);
+      padding: 3rem 1.5rem;
+      border-radius: 8px;
+      border: 1px solid var(--plum-accent);
     }
 
     /* ==========================================================================
-       12. FOOTER
+       10. RESPONSIVE BREAKPOINTS
        ========================================================================== */
-    footer {
-      background-color: var(--primary);
-      color: var(--white);
-      padding: 4rem 0 3rem;
-      text-align: center;
-    }
-
-    footer h2 {
-      color: var(--white);
-      font-size: 2.2rem;
-      letter-spacing: 3px;
-      margin-bottom: 0.5rem;
-    }
-
-    footer p {
-      color: rgba(255, 255, 255, 0.6);
-      font-size: 0.8rem;
-      letter-spacing: 2px;
-    }
-
-    /* ==========================================================================
-       13. RESPONSIVE BREAKPOINTS
-       ========================================================================== */
-    @media (max-width: 992px) {
-      .gallery-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
     @media (max-width: 768px) {
-      section { padding: 4rem 0; }
-      
-      .venues-grid, .dress-grid, .entourage-grid {
-        grid-template-columns: 1fr;
-        gap: 2rem;
-      }
-
-      .story-card, .details-box, .rsvp-form-container, .gifts-card, .hero-box {
-        padding: 2.5rem 1.5rem;
-      }
-
-      /* Mobile Timeline Shift */
-      .timeline::before { left: 15px; }
-      .timeline-item { justify-content: flex-start !important; }
-      .timeline-content {
-        width: calc(100% - 40px);
-        margin-left: 40px;
-        text-align: left !important;
-      }
-      .timeline-dot { left: 15px; }
-    }
-
-    @media (max-width: 480px) {
-      .gallery-grid {
-        grid-template-columns: 1fr;
-      }
-      .countdown-grid {
-        gap: 0.5rem;
-      }
-      .countdown-number {
-        font-size: 2rem;
-      }
-      .hero-title {
-        font-size: 2.5rem;
-      }
+      .container { padding: 2.5rem 1rem 3rem; }
+      .venue-cards-grid, .story-images-grid, .simple-gallery-grid { grid-template-columns: 1fr; }
+      .story-img-card, .gallery-thumb { height: 200px; }
+      .countdown-display { gap: 0.8rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Audio Element -->
-  <audio id="bg-music" loop preload="auto">
-    <source src="song1.mp3" type="audio/mpeg">
+  <audio id="bg-music" loop>
+    <source src="song.mp3" type="audio/mpeg">
   </audio>
 
-  <!-- Audio Toggle Button -->
-  <button class="music-toggle" id="music-btn" aria-label="Toggle Audio">
-    <svg id="music-icon-play" viewBox="0 0 24 24">
-      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
-    </svg>
-  </button>
+  <div class="music-control">
+    <button class="music-btn" onclick="toggleMusic()" id="music-toggle-btn">🎵 Play Music</button>
+  </div>
 
-  <!-- ==========================================================================
-     HERO / COVER SECTION
-     ========================================================================== -->
-  <section id="hero">
-    <div class="container text-center">
-      <div class="hero-box reveal">
-        <span class="hero-eyebrow">An Invitation to Celebrate</span>
-        <h1 class="hero-title">Elena & Adrian</h1>
-        <div class="hero-details">31 January 2028 &nbsp;·&nbsp; Manila</div>
-        <button class="btn" onclick="scrollToInvitation()">View Invitation &darr;</button>
-      </div>
+  <div class="screen active" id="screen-cover">
+    <div class="cover-image"></div>
+    <div class="cover-overlay"></div>
+    <div class="cover-content">
+      <div class="cover-subtitle">TOGETHER WITH THEIR FAMILIES</div>
+      <h1 class="cover-names">ELENA & ADRIAN</h1>
+      <div class="cover-date">JANUARY 31, 2028 · MANILA</div>
+      
+      <button class="btn" onclick="startExperience()">ENTER INVITATION →</button>
     </div>
-  </section>
+  </div>
 
-  <!-- ==========================================================================
-     COUNTDOWN SECTION
-     ========================================================================== -->
-  <section id="countdown">
+  <div class="screen" id="screen-menu">
     <div class="container text-center">
-      <div class="countdown-grid reveal">
-        <div class="countdown-item">
-          <div class="countdown-number" id="cd-days">00</div>
-          <div class="countdown-label">Days</div>
-        </div>
-        <div class="countdown-item">
-          <div class="countdown-number" id="cd-hours">00</div>
-          <div class="countdown-label">Hours</div>
-        </div>
-        <div class="countdown-item">
-          <div class="countdown-number" id="cd-minutes">00</div>
-          <div class="countdown-label">Minutes</div>
-        </div>
-        <div class="countdown-item">
-          <div class="countdown-number" id="cd-seconds">00</div>
-          <div class="countdown-label">Seconds</div>
+      
+      <div class="countdown-card reveal-on-scroll">
+        <div class="section-subtitle" style="margin-bottom: 0.5rem;">COUNTDOWN TO THE WEDDING</div>
+        <div class="countdown-display">
+          <div class="count-unit"><span class="count-num" id="cd-days">00</span><span class="count-label">Days</span></div>
+          <div class="count-unit"><span class="count-num" id="cd-hours">00</span><span class="count-label">Hours</span></div>
+          <div class="count-unit"><span class="count-num" id="cd-mins">00</span><span class="count-label">Mins</span></div>
+          <div class="count-unit"><span class="count-num" id="cd-secs">00</span><span class="count-label">Secs</span></div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ==========================================================================
-     OUR STORY SECTION
-     ========================================================================== -->
-  <section id="our-story">
-    <div class="container-narrow">
-      <div class="story-card reveal">
-        <span class="eyebrow">A Little Story About Us</span>
-        <h2 class="section-title">Our Story</h2>
-        <div class="divider"></div>
-        <div class="story-body">
-          <p>We met over iced coffee on an ordinary afternoon in Manila. What was supposed to be a quick coffee date turned into hours of conversation, laughter, and the subtle realization that our lives were changing forever.</p>
-          <div class="script" style="margin: 1.5rem 0;">we became us.</div>
-          <p>Through all the shared journeys, quiet moments, and growth over the years, our love grew stronger. Now, we are ready to make a lifelong promise to each other surrounded by the people we cherish most.</p>
-        </div>
+      <div class="menu-header reveal-on-scroll">
+        <h2>Elena & Adrian</h2>
+        <p>31 · 01 · 2028</p>
       </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-     THE DAY / WEDDING DETAILS
-     ========================================================================== -->
-  <section id="details">
-    <div class="container text-center">
-      <span class="eyebrow reveal">When & Where</span>
-      <h2 class="section-title reveal">The Wedding Day</h2>
-      <p class="section-subtitle reveal">Two places. One promise. A day we will always remember.</p>
-
-      <div class="venues-grid">
-        <!-- Ceremony Card -->
-        <div class="venue-card reveal">
-          <div class="venue-img-wrap">
-            <img src="church1.jpeg" alt="San Sebastian Church">
+      
+      <div class="elegant-menu reveal-on-scroll">
+        <div class="elegant-item" onclick="openScreen('story')">
+          <div>
+            <div class="ei-title">Our Story</div>
+            <div class="ei-desc">How our journey began</div>
           </div>
+          <span class="ei-arrow">→</span>
+        </div>
+
+        <div class="elegant-item" onclick="openScreen('day')">
+          <div>
+            <div class="ei-title">Wedding Day & Schedule</div>
+            <div class="ei-desc">Ceremony, reception & timeline</div>
+          </div>
+          <span class="ei-arrow">→</span>
+        </div>
+        
+        <div class="elegant-item" onclick="openScreen('details')">
+          <div>
+            <div class="ei-title">Event Details & Entourage</div>
+            <div class="ei-desc">Dress code, entourage, gifts & FAQ</div>
+          </div>
+          <span class="ei-arrow">→</span>
+        </div>
+        
+        <div class="elegant-item" onclick="openScreen('gallery')">
+          <div>
+            <div class="ei-title">Gallery</div>
+            <div class="ei-desc">Our cherished moments</div>
+          </div>
+          <span class="ei-arrow">→</span>
+        </div>
+        
+        <div class="elegant-item" onclick="openScreen('rsvp')">
+          <div>
+            <div class="ei-title">RSVP</div>
+            <div class="ei-desc">Confirm your attendance</div>
+          </div>
+          <span class="ei-arrow">→</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-story">
+    <div class="container text-center">
+      <div class="section-subtitle reveal-on-scroll">CHAPTER 01</div>
+      <h2 class="section-title reveal-on-scroll">OUR STORY</h2>
+
+      <div class="story-images-grid reveal-on-scroll">
+        <img src="ourstory.jpeg" alt="Elena & Adrian" class="story-img-card">
+        <img src="welcome.jpeg" alt="Elena & Adrian Together" class="story-img-card">
+      </div>
+
+      <div class="story-text-block reveal-on-scroll">
+        <p>It started with coffee on an ordinary afternoon in Manila. What was intended to be a brief meeting turned into hours of shared laughter, quiet understanding, and the effortless realization that we had found home in one another.</p>
+        <p>Through years of shared dreams, travels, and everyday moments, our bond has only grown deeper. Now, surrounded by those we love most, we are excited to begin our greatest chapter yet as husband and wife.</p>
+      </div>
+
+      <div class="text-center">
+        <a class="back-btn" onclick="openScreen('menu')">← Back to Menu</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-day">
+    <div class="container text-center">
+      <div class="section-subtitle reveal-on-scroll">CHAPTER 02</div>
+      <h2 class="section-title reveal-on-scroll">THE WEDDING DAY</h2>
+
+      <div class="venue-cards-grid reveal-on-scroll">
+        <div class="venue-card">
+          <div class="venue-tag">The Ceremony</div>
+          <h3 class="venue-name">San Sebastian Church</h3>
           <div class="venue-info">
-            <div>
-              <div class="venue-type">The Ceremony</div>
-              <h3 class="venue-name">San Sebastian Church</h3>
-              <div class="venue-meta">Tuesday, 31 January 2028 &nbsp;|&nbsp; 3:00 PM</div>
-              <p class="venue-desc">Plaza del Carmen, Quiapo, Manila, Metro Manila</p>
-            </div>
-            <div>
-              <a href="https://maps.google.com/?q=San+Sebastian+Church+Manila" target="_blank" class="btn-outline">Get Directions</a>
-            </div>
+            3:00 PM<br>
+            Plaza del Carmen, Quiapo, Manila
           </div>
+          <a href="https://maps.google.com" target="_blank" class="map-btn">View Map →</a>
         </div>
 
-        <!-- Reception Card -->
-        <div class="venue-card reveal">
-          <div class="venue-img-wrap">
-            <img src="hotel1.jpg" alt="Manila Hotel">
-          </div>
+        <div class="venue-card">
+          <div class="venue-tag">The Reception</div>
+          <h3 class="venue-name">Manila Hotel</h3>
           <div class="venue-info">
-            <div>
-              <div class="venue-type">The Reception</div>
-              <h3 class="venue-name">Manila Hotel</h3>
-              <div class="venue-meta">Tuesday, 31 January 2028 &nbsp;|&nbsp; 6:00 PM</div>
-              <p class="venue-desc">One Rizal Park, Ermita, Manila, Metro Manila</p>
-            </div>
-            <div>
-              <a href="https://maps.google.com/?q=The+Manila+Hotel+Manila" target="_blank" class="btn-outline">Get Directions</a>
-            </div>
+            6:00 PM<br>
+            One Rizal Park, Ermita, Manila
           </div>
+          <a href="https://maps.google.com" target="_blank" class="map-btn">View Map →</a>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ==========================================================================
-     WEDDING SCHEDULE
-     ========================================================================== -->
-  <section id="schedule">
-    <div class="container text-center">
-      <span class="eyebrow reveal">Order of Events</span>
-      <h2 class="section-title reveal">The Program</h2>
-      <div class="divider reveal"></div>
-
-      <div class="timeline">
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-time">5:00 PM</div>
-            <h3 class="timeline-title">Cocktails & Registration</h3>
-            <div class="timeline-desc">Welcome drinks and light acoustic music as guests arrive and settle in.</div>
-          </div>
+      <h3 class="serif reveal-on-scroll" style="font-size: 22px; color: var(--white); margin-bottom: 2rem; letter-spacing: 2px;">PROGRAM TIMELINE</h3>
+      
+      <div class="simple-timeline reveal-on-scroll">
+        <div class="timeline-item">
+          <div class="timeline-time">3:00 PM</div>
+          <div class="timeline-event">Wedding Ceremony</div>
+          <div class="timeline-desc">San Sebastian Church</div>
         </div>
 
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-time">6:00 PM</div>
-            <h3 class="timeline-title">Start of Program</h3>
-            <div class="timeline-desc">Formal opening of the evening's festivities by our host.</div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-time">5:00 PM</div>
+          <div class="timeline-event">Cocktails & Registration</div>
+          <div class="timeline-desc">Welcome drinks and appetizers at Manila Hotel</div>
         </div>
 
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-time">6:15 PM</div>
-            <h3 class="timeline-title">Grand Entrance</h3>
-            <div class="timeline-desc">Welcoming the newlyweds as they enter as husband and wife.</div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-time">6:00 PM</div>
+          <div class="timeline-event">Grand Entrance & Reception</div>
+          <div class="timeline-desc">Program formally commences</div>
         </div>
 
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-time">6:45 PM</div>
-            <h3 class="timeline-title">First Dance</h3>
-            <div class="timeline-desc">Elena and Adrian take the floor for their first dance.</div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-time">7:15 PM</div>
+          <div class="timeline-event">Dinner & Speeches</div>
+          <div class="timeline-desc">Dinner served alongside toasts from family & friends</div>
         </div>
 
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-time">7:15 PM</div>
-            <h3 class="timeline-title">Dinner & Speeches</h3>
-            <div class="timeline-desc">A dinner served alongside messages and toasts from our families.</div>
-          </div>
-        </div>
-
-        <div class="timeline-item reveal">
-          <div class="timeline-dot"></div>
-          <div class="timeline-content">
-            <div class="timeline-time">8:30 PM</div>
-            <h3 class="timeline-title">Socials & Party</h3>
-            <div class="timeline-desc">The dance floor opens! Music, drinks, and celebration to close the night.</div>
-          </div>
+        <div class="timeline-item">
+          <div class="timeline-time">8:30 PM</div>
+          <div class="timeline-event">Socials & Dancing</div>
+          <div class="timeline-desc">Party and celebration continues</div>
         </div>
       </div>
+
+      <div class="text-center">
+        <a class="back-btn" onclick="openScreen('menu')">← Back to Menu</a>
+      </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ==========================================================================
-     ENTOURAGE
-     ========================================================================== -->
-  <section id="entourage">
+  <div class="screen" id="screen-details">
     <div class="container text-center">
-      <span class="eyebrow reveal">With Our Beloved Families</span>
-      <h2 class="section-title reveal">The Entourage</h2>
-      <p class="section-subtitle reveal">Standing beside us as we take our vows.</p>
+      <div class="section-subtitle reveal-on-scroll">CHAPTER 03</div>
+      <h2 class="section-title reveal-on-scroll">IMPORTANT INFORMATION</h2>
 
-      <div class="entourage-grid reveal">
+      <div class="details-box reveal-on-scroll">
+        <h3>Dress Code</h3>
+        <p><strong>Black & White Formal / Black Tie Optional</strong></p>
+        <p style="margin-top: 0.5rem;">Gentlemen: Dark suit, tuxedo, or formal barong.<br>Ladies: Floor-length gown or formal cocktail dress in black, white, or monochrome accents.</p>
+      </div>
+
+      <div class="reveal-on-scroll" style="margin: 3rem 0;">
+        <h3 class="serif" style="font-size: 22px; color: var(--white); margin-bottom: 1.5rem; letter-spacing: 2px;">THE WEDDING ENTOURAGE</h3>
+        
         <div class="entourage-group">
           <div class="entourage-role">Parents of the Bride</div>
-          <div class="entourage-name">Mr. Roberto Santos</div>
-          <div class="entourage-name">Mrs. Carmen Santos</div>
+          <div class="entourage-names">Mr. Julian Santos & Mrs. Clara Santos</div>
         </div>
 
         <div class="entourage-group">
           <div class="entourage-role">Parents of the Groom</div>
-          <div class="entourage-name">Mr. Fernando Reyes</div>
-          <div class="entourage-name">Mrs. Alicia Reyes</div>
+          <div class="entourage-names">Mr. Roberto Reyes & Mrs. Teresa Reyes</div>
         </div>
 
         <div class="entourage-group">
-          <div class="entourage-role">Maid of Honor</div>
-          <div class="entourage-name">Sophia Santos</div>
-        </div>
-
-        <div class="entourage-group">
-          <div class="entourage-role">Best Man</div>
-          <div class="entourage-name">Marco Reyes</div>
-        </div>
-
-        <div class="entourage-group">
-          <div class="entourage-role">Principal Sponsors</div>
-          <div class="entourage-name">Mr. Ricardo Cruz & Mrs. Elena Cruz</div>
-          <div class="entourage-name">Mr. Gabriel Gomez & Mrs. Teresa Gomez</div>
+          <div class="entourage-role">Maid of Honor & Best Man</div>
+          <div class="entourage-names">Sofia Santos (Maid of Honor)<br>Gabriel Reyes (Best Man)</div>
         </div>
 
         <div class="entourage-group">
           <div class="entourage-role">Bridesmaids & Groomsmen</div>
-          <div class="entourage-name">Isabella Santos & Lucas Torres</div>
-          <div class="entourage-name">Clara Mendoza & Mateo Ramos</div>
+          <div class="entourage-names">
+            Isabella Cruz · Mateo Fernandez<br>
+            Camila Diaz · Lucas Gomez
+          </div>
         </div>
       </div>
-    </div>
-  </section>
 
-  <!-- ==========================================================================
-     GALLERY SECTION
-     ========================================================================== -->
-  <section id="gallery">
+      <div class="details-box reveal-on-scroll">
+        <h3>Gift Registry & Monetary Gifts</h3>
+        <p>Your presence at our wedding is the greatest gift of all. However, should you wish to honor us with a gift, a monetary contribution towards our new home together would be warmly appreciated.</p>
+        <div class="bank-details">
+          BDO Account: 0012-3456-7890 (Adrian Reyes)<br>
+          GCash: 0917-123-4567 (Elena Santos)
+        </div>
+      </div>
+
+      <div class="details-box reveal-on-scroll">
+        <h3>Frequently Asked Questions</h3>
+        
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Is parking available at the venues? <span>+</span></button>
+          <div class="faq-a">Yes, parking is available at San Sebastian Church courtyard. Manila Hotel provides valet parking and a multi-level guest garage.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">Can I bring a plus one? <span>+</span></button>
+          <div class="faq-a">Due to venue capacity, we can only accommodate guests named on your invitation envelope.</div>
+        </div>
+
+        <div class="faq-item">
+          <button class="faq-q" onclick="toggleFaq(this)">What is the RSVP deadline? <span>+</span></button>
+          <div class="faq-a">Please submit your RSVP response on or before December 15, 2027.</div>
+        </div>
+      </div>
+
+      <div class="text-center">
+        <a class="back-btn" onclick="openScreen('menu')">← Back to Menu</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="screen" id="screen-gallery">
     <div class="container text-center">
-      <span class="eyebrow reveal">Captured Moments</span>
-      <h2 class="section-title reveal">Gallery</h2>
-      <div class="divider reveal"></div>
+      <div class="section-subtitle reveal-on-scroll">CHAPTER 04</div>
+      <h2 class="section-title reveal-on-scroll">GALLERY</h2>
+      <p style="font-size: 11px; color: var(--text-muted); letter-spacing: 2px; text-transform: uppercase;">Moments Along The Way</p>
 
-      <div class="gallery-grid">
-        <div class="gallery-item reveal"><img src="1photo1.jpeg" alt="Moment 1"></div>
-        <div class="gallery-item reveal"><img src="1photo2.jpeg" alt="Moment 2"></div>
-        <div class="gallery-item reveal"><img src="1photo3.jpeg" alt="Moment 3"></div>
-        <div class="gallery-item reveal"><img src="1photo4.jpeg" alt="Moment 4"></div>
-        <div class="gallery-item reveal"><img src="1photo5.jpeg" alt="Moment 5"></div>
-        <div class="gallery-item reveal"><img src="1photo6.jpeg" alt="Moment 6"></div>
-        <div class="gallery-item reveal"><img src="1photo7.jpeg" alt="Moment 7"></div>
-        <div class="gallery-item reveal"><img src="1photo8.jpeg" alt="Moment 8"></div>
-        <div class="gallery-item reveal"><img src="1photo9.jpeg" alt="Moment 9"></div>
-        <div class="gallery-item reveal"><img src="1photo10.jpeg" alt="Moment 10"></div>
+      <div class="simple-gallery-grid reveal-on-scroll">
+        <img src="photo1.jpeg" alt="Gallery Photo 1" class="gallery-thumb" loading="lazy">
+        <img src="photo2.jpeg" alt="Gallery Photo 2" class="gallery-thumb" loading="lazy">
+        <img src="photo3.jpeg" alt="Gallery Photo 3" class="gallery-thumb" loading="lazy">
+        <img src="photo4.jpeg" alt="Gallery Photo 4" class="gallery-thumb" loading="lazy">
+        <img src="photo5.jpeg" alt="Gallery Photo 5" class="gallery-thumb" loading="lazy">
+        <img src="photo6.jpeg" alt="Gallery Photo 6" class="gallery-thumb" loading="lazy">
+        <img src="photo7.jpeg" alt="Gallery Photo 7" class="gallery-thumb" loading="lazy">
+        <img src="photo8.jpeg" alt="Gallery Photo 8" class="gallery-thumb" loading="lazy">
+        <img src="photo9.jpeg" alt="Gallery Photo 9" class="gallery-thumb" loading="lazy">
+        <img src="photo10.jpeg" alt="Gallery Photo 10" class="gallery-thumb" loading="lazy">
+      </div>
+
+      <div class="text-center">
+        <a class="back-btn" onclick="openScreen('menu')">← Back to Menu</a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ==========================================================================
-     DRESS CODE & FAQ
-     ========================================================================== -->
-  <section id="dress-code">
-    <div class="container-narrow text-center">
-      <div class="details-box reveal">
-        <span class="eyebrow">Guest Information</span>
-        <h2 class="section-title">Dress Code & Details</h2>
-        <div class="divider"></div>
+  <div class="screen" id="screen-rsvp">
+    <div class="container text-center">
+      <div class="section-subtitle reveal-on-scroll">CHAPTER 05</div>
+      <h2 class="section-title reveal-on-scroll">R. S. V. P.</h2>
+      <p style="color: var(--lavender-border); font-size: 12px; margin-bottom: 2.5rem;" class="reveal-on-scroll">Please respond on or before December 15, 2027.</p>
 
-        <div class="dress-grid">
-          <div class="dress-card">
-            <h4>Ladies</h4>
-            <p>Black, white, ivory, or monochrome formal wear.</p>
-          </div>
-          <div class="dress-card">
-            <h4>Gentlemen</h4>
-            <p>Black suit, tuxedo, white shirt, or classic monochrome formal wear.</p>
-          </div>
+      <form id="rsvp-form" class="rsvp-form reveal-on-scroll" onsubmit="submitRSVP(event)">
+        <div class="form-group">
+          <label>Full Name</label>
+          <input type="text" required placeholder="Your Name">
         </div>
-
-        <div class="faq-wrapper">
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Is there available parking at the venues?
-              <span>+</span>
-            </button>
-            <div class="faq-content">
-              <p>Yes, street and courtyard parking is available at San Sebastian Church. For the reception, Manila Hotel provides valet services and guest garage parking.</p>
-            </div>
-          </div>
-
-          <div class="faq-item">
-            <button class="faq-btn" onclick="toggleFaq(this)">
-              Can I request special dietary accommodations?
-              <span>+</span>
-            </button>
-            <div class="faq-content">
-              <p>Please specify any food allergies or dietary restrictions in your RSVP response so we can inform the caterers ahead of time.</p>
-            </div>
-          </div>
+        <div class="form-group">
+          <label>Attendance</label>
+          <select required>
+            <option value="yes">Joyfully Accepts</option>
+            <option value="no">Regretfully Declines</option>
+          </select>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-     GIFTS / REGISTRY
-     ========================================================================== -->
-  <section id="gifts">
-    <div class="container-narrow text-center">
-      <div class="gifts-card reveal">
-        <span class="eyebrow">With Heartfelt Thanks</span>
-        <h2 class="section-title">Registry & Gifts</h2>
-        <div class="divider"></div>
-        <p>Your presence at our wedding is the greatest gift of all. However, should you wish to honor us with a gift, a monetary contribution towards our new home and future together would be sincerely appreciated.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- ==========================================================================
-     RSVP SECTION
-     ========================================================================== -->
-  <section id="rsvp">
-    <div class="container-narrow text-center">
-      <span class="eyebrow reveal">Join Our Celebration</span>
-      <h2 class="section-title reveal">RSVP</h2>
-      <p class="section-subtitle reveal">Please confirm your attendance by December 1, 2027.</p>
-
-      <div class="rsvp-form-container reveal">
-        <form id="rsvp-form" onsubmit="handleRSVP(event)">
-          <div class="form-group">
-            <label>Your Full Name</label>
-            <input type="text" class="form-control" required placeholder="Jane Doe">
-          </div>
-
-          <div class="form-group">
-            <label>Will you be attending?</label>
-            <select class="form-control" required>
-              <option value="yes">Happily, yes!</option>
-              <option value="no">Regretfully, no.</option>
-            </select>
-          </div>
-
-          <div class="form-group">
-            <label>Number of Guests</label>
-            <select class="form-control" required>
-              <option value="1">1 Person</option>
-              <option value="2">2 Persons</option>
-            </select>
-          </div>
-
-          <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Confirm RSVP</button>
-        </form>
-
-        <div id="rsvp-success" class="rsvp-success">
-          <h3 class="serif" style="font-size: 2rem; margin-bottom: 0.5rem;">Thank You!</h3>
-          <p>Your RSVP response has been safely recorded. We look forward to celebrating with you!</p>
+        <div class="form-group">
+          <label>Number of Guests</label>
+          <select required>
+            <option value="1">1 Person</option>
+            <option value="2">2 Persons</option>
+          </select>
         </div>
+        <div class="form-group">
+          <label>Dietary Restrictions / Notes</label>
+          <input type="text" placeholder="e.g. Allergies, Vegetarian">
+        </div>
+        <button type="submit" class="btn" style="width: 100%;">Submit RSVP →</button>
+      </form>
+
+      <div id="rsvp-success" class="rsvp-success">
+        <h3 class="serif" style="font-size: 28px; color: var(--white); margin-bottom: 0.5rem;">Response Received</h3>
+        <p style="color: var(--lavender-border); font-size: 13px;">Thank you! We look forward to celebrating with you.</p>
+      </div>
+
+      <div class="text-center">
+        <a class="back-btn" onclick="openScreen('menu')">← Back to Menu</a>
       </div>
     </div>
-  </section>
+  </div>
 
-  <!-- ==========================================================================
-     FOOTER
-     ========================================================================== -->
-  <footer>
-    <div class="container">
-      <h2>Elena & Adrian</h2>
-      <p>31 JANUARY 2028 &nbsp;·&nbsp; MANILA</p>
-    </div>
-  </footer>
-
-  <!-- ==========================================================================
-     JAVASCRIPT INTERACTION
-     ========================================================================== -->
   <script>
-    /* Audio Controls */
-    const music = document.getElementById('bg-music');
-    const musicBtn = document.getElementById('music-btn');
-    let isPlaying = false;
-
-    function toggleAudio() {
-      if (isPlaying) {
-        music.pause();
-        isPlaying = false;
-        musicBtn.style.opacity = '0.6';
-      } else {
-        music.play().then(() => {
-          isPlaying = true;
-          musicBtn.style.opacity = '1';
-        }).catch(err => console.log('Audio blocked:', err));
-      }
-    }
-
-    musicBtn.addEventListener('click', toggleAudio);
-
-    /* Smooth Navigation */
-    function scrollToInvitation() {
-      document.getElementById('countdown').scrollIntoView({ behavior: 'smooth' });
-      if (!isPlaying) {
-        toggleAudio();
-      }
-    }
-
-    /* Dynamic Countdown Timer */
-    function initCountdown() {
-      const targetDate = new Date('January 31, 2028 15:00:00').getTime();
-
-      function update() {
-        const now = new Date().getTime();
-        const diff = targetDate - now;
-
-        if (diff <= 0) {
-          document.getElementById('cd-days').innerText = '00';
-          document.getElementById('cd-hours').innerText = '00';
-          document.getElementById('cd-minutes').innerText = '00';
-          document.getElementById('cd-seconds').innerText = '00';
-          return;
-        }
-
-        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-        document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
-        document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
-        document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
-        document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
-      }
-
-      update();
-      setInterval(update, 1000);
-    }
-
-    /* Scroll Reveal Observer */
-    function initScrollObserver() {
-      const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('active');
-          }
+    /* EXPERIENCE & AUDIO CONTROL */
+    function startExperience() {
+      var music = document.getElementById('bg-music');
+      if (music) {
+        music.play().catch(function(error) {
+          console.log("Audio playback deferred: ", error);
         });
-      }, { threshold: 0.1 });
-
-      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+      }
+      openScreen('menu');
     }
 
-    /* FAQ Accordion Toggle */
-    function toggleFaq(btn) {
-      const item = btn.parentElement;
-      const isActive = item.classList.contains('active');
-      
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
-      
-      if (!isActive) {
-        item.classList.add('active');
+    function toggleMusic() {
+      var music = document.getElementById('bg-music');
+      var btn = document.getElementById('music-toggle-btn');
+      if (music.paused) {
+        music.play();
+        btn.innerHTML = "🎵 Pause Music";
+      } else {
+        music.pause();
+        btn.innerHTML = "🎵 Play Music";
       }
     }
 
-    /* RSVP Form Mock Handler */
-    function handleRSVP(e) {
+    /* SCREEN ROUTING */
+    function openScreen(screenId) {
+      document.querySelectorAll('.screen').forEach(screen => {
+        screen.classList.remove('active');
+      });
+      
+      const targetScreen = document.getElementById('screen-' + screenId);
+      targetScreen.classList.add('active');
+      window.scrollTo(0, 0); 
+
+      initGeneralScrollObserver();
+    }
+
+    /* FAQ TOGGLE */
+    function toggleFaq(btn) {
+      const parent = btn.parentElement;
+      parent.classList.toggle('open');
+    }
+
+    /* RSVP FORM SUBMISSION */
+    function submitRSVP(e) {
       e.preventDefault();
       document.getElementById('rsvp-form').style.display = 'none';
       document.getElementById('rsvp-success').style.display = 'block';
     }
 
-    /* Lifecycle Init */
+    /* SIMPLE COUNTDOWN TIMER */
+    function updateCountdown() {
+      const weddingDate = new Date('January 31, 2028 15:00:00').getTime();
+      const now = new Date().getTime();
+      const diff = weddingDate - now;
+
+      if (diff > 0) {
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const secs = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('cd-mins').innerText = String(mins).padStart(2, '0');
+        document.getElementById('cd-secs').innerText = String(secs).padStart(2, '0');
+      }
+    }
+
+    /* SCROLL REVEAL OBSERVER */
+    let observer;
+    function initGeneralScrollObserver() {
+      if (observer) observer.disconnect();
+
+      observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-revealed');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.screen.active .reveal-on-scroll').forEach(el => {
+        observer.observe(el);
+      });
+    }
+
     document.addEventListener('DOMContentLoaded', () => {
-      initCountdown();
-      initScrollObserver();
+      initGeneralScrollObserver();
+      setInterval(updateCountdown, 1000);
+      updateCountdown();
     });
   </script>
 </body>
