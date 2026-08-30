@@ -12,19 +12,18 @@
 
   <style>
     /* ==========================================================================
-       1. DESIGN SYSTEM & CSS VARIABLES
+       1. DESIGN SYSTEM & CSS VARIABLES (Soft Editorial Lavender)
        ========================================================================== */
     :root {
       /* Palette */
-      --primary: #1A1A1A;
-      --secondary: #FAF8F5;
-      --text: #2C2C2C;
-      --text-muted: #767676;
-      --accent: #9E8A78;
-      --border: #E5DFD7;
-      --card-bg: #FFFFFF;
+      --primary: #211C27;        /* Deep Warm Slate with a hint of plum */
+      --secondary: #F8F6FA;      /* Soft Alabaster with a touch of lavender */
+      --text: #36303D;           /* Muted charcoal for soft readability */
+      --text-muted: #797182;     /* Subtle dusty violet-gray */
+      --accent: #9A84A1;         /* Refined, elegant Muted Lavender */
+      --border: #E8E2EC;         /* Delicate lavender-tinted border */
+      --card-bg: #FFFFFF;        /* Pure White for crisp contrast */
       --white: #FFFFFF;
-      --overlay: rgba(0, 0, 0, 0.45);
 
       /* Fonts */
       --font-heading: 'Cormorant Garamond', Georgia, serif;
@@ -218,55 +217,40 @@
     }
 
     /* ==========================================================================
-       2. HERO / COVER SECTION
+       2. HERO / COVER SECTION (Strict Package 1: Minimal Solid Layout)
        ========================================================================== */
     #hero {
-      height: 100vh;
-      min-height: 650px;
-      padding: 0;
+      min-height: 85vh;
+      padding: 4rem 0;
       display: flex;
       align-items: center;
       justify-content: center;
       position: relative;
-      background-color: var(--primary);
-      color: var(--white);
-      overflow: hidden;
+      background-color: var(--secondary);
+      border-bottom: 1px solid var(--border);
     }
 
-    .hero-bg {
-      position: absolute;
-      top: 0; left: 0; width: 100%; height: 100%;
-      background-image: url('cover1.jpeg');
-      background-size: cover;
-      background-position: center;
-      opacity: 0.55;
-      transform: scale(1.03);
-      transition: transform 10s ease-out;
-    }
-
-    #hero:hover .hero-bg {
-      transform: scale(1);
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-      padding: 0 1.5rem;
+    .hero-box {
+      border: 1px solid var(--border);
+      background: var(--white);
+      padding: 5rem 3rem;
+      max-width: 750px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
     }
 
     .hero-eyebrow {
       font-size: 0.8rem;
       letter-spacing: 6px;
       text-transform: uppercase;
-      color: rgba(255, 255, 255, 0.85);
+      color: var(--accent);
       margin-bottom: 1.5rem;
-      font-weight: 300;
+      font-weight: 500;
     }
 
     .hero-title {
-      font-size: clamp(2.8rem, 7vw, 5.5rem);
-      color: var(--white);
+      font-size: clamp(2.8rem, 6vw, 4.8rem);
+      color: var(--primary);
       letter-spacing: 4px;
       text-transform: uppercase;
       margin-bottom: 1.5rem;
@@ -276,27 +260,10 @@
     .hero-details {
       font-size: clamp(0.85rem, 1.5vw, 1rem);
       letter-spacing: 4px;
-      color: rgba(255, 255, 255, 0.9);
+      color: var(--text-muted);
       text-transform: uppercase;
       margin-bottom: 3.5rem;
       font-weight: 300;
-    }
-
-    .hero-btn {
-      background: transparent;
-      color: var(--white);
-      border: 1px solid rgba(255, 255, 255, 0.7);
-      padding: 1rem 2.2rem;
-      font-size: 0.75rem;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      transition: var(--transition);
-    }
-
-    .hero-btn:hover {
-      background: var(--white);
-      color: var(--primary);
-      border-color: var(--white);
     }
 
     /* ==========================================================================
@@ -339,19 +306,14 @@
        4. OUR STORY
        ========================================================================== */
     #our-story {
-      position: relative;
-      background-image: linear-gradient(rgba(250, 248, 245, 0.88), rgba(250, 248, 245, 0.88)), url('ourstory1.jpeg');
-      background-size: cover;
-      background-position: center;
-      background-attachment: fixed;
+      background-color: var(--secondary);
     }
 
     .story-card {
-      background: rgba(255, 255, 255, 0.95);
-      backdrop-filter: blur(5px);
+      background: var(--white);
       padding: 4rem 3rem;
       border: 1px solid var(--border);
-      box-shadow: 0 10px 30px rgba(0,0,0,0.03);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
       text-align: center;
     }
 
@@ -561,11 +523,6 @@
       margin-bottom: 0.2rem;
     }
 
-    .entourage-sub {
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
-
     /* ==========================================================================
        8. GALLERY
        ========================================================================== */
@@ -730,7 +687,7 @@
 
     select.form-control {
       appearance: none;
-      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%202C2C2C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%20211C27' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
       background-repeat: no-repeat;
       background-position: right 1rem center;
       background-size: 1em;
@@ -782,7 +739,7 @@
         gap: 2rem;
       }
 
-      .story-card, .details-box, .rsvp-form-container, .gifts-card {
+      .story-card, .details-box, .rsvp-form-container, .gifts-card, .hero-box {
         padding: 2.5rem 1.5rem;
       }
 
@@ -831,12 +788,13 @@
      HERO / COVER SECTION
      ========================================================================== -->
   <section id="hero">
-    <div class="hero-bg"></div>
-    <div class="hero-content">
-      <span class="hero-eyebrow">An Invitation to Celebrate</span>
-      <h1 class="hero-title">Elena & Adrian</h1>
-      <div class="hero-details">31 January 2028 &nbsp;·&nbsp; Manila</div>
-      <button class="hero-btn" onclick="scrollToInvitation()">View Invitation &darr;</button>
+    <div class="container text-center">
+      <div class="hero-box reveal">
+        <span class="hero-eyebrow">An Invitation to Celebrate</span>
+        <h1 class="hero-title">Elena & Adrian</h1>
+        <div class="hero-details">31 January 2028 &nbsp;·&nbsp; Manila</div>
+        <button class="btn" onclick="scrollToInvitation()">View Invitation &darr;</button>
+      </div>
     </div>
   </section>
 
