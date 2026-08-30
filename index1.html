@@ -1,0 +1,1280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Elena & Adrian — Essential Wedding Invitation</title>
+  
+  <!-- Typography -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Poppins:wght@300;400;500;600&family=Allura&display=swap" rel="stylesheet">
+
+  <style>
+    /* ==========================================================================
+       1. DESIGN SYSTEM & CSS VARIABLES
+       ========================================================================== */
+    :root {
+      /* Palette */
+      --primary: #1A1A1A;
+      --secondary: #FAF8F5;
+      --text: #2C2C2C;
+      --text-muted: #767676;
+      --accent: #9E8A78;
+      --border: #E5DFD7;
+      --card-bg: #FFFFFF;
+      --white: #FFFFFF;
+      --overlay: rgba(0, 0, 0, 0.45);
+
+      /* Fonts */
+      --font-heading: 'Cormorant Garamond', Georgia, serif;
+      --font-body: 'Poppins', sans-serif;
+      --font-script: 'Allura', cursive;
+
+      /* Layout */
+      --container-max: 1100px;
+      --container-narrow: 780px;
+      --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    html {
+      scroll-behavior: smooth;
+      font-size: 16px;
+    }
+
+    body {
+      background-color: var(--secondary);
+      color: var(--text);
+      font-family: var(--font-body);
+      line-height: 1.8;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* Typography Utilities */
+    h1, h2, h3, h4, .serif {
+      font-family: var(--font-heading);
+      font-weight: 400;
+      line-height: 1.2;
+      color: var(--primary);
+    }
+
+    .script {
+      font-family: var(--font-script);
+      font-size: 2.2rem;
+      color: var(--accent);
+      line-weight: normal;
+    }
+
+    .eyebrow {
+      font-size: 0.75rem;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 1rem;
+    }
+
+    .section-subtitle {
+      font-family: var(--font-heading);
+      font-style: italic;
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      margin-bottom: 3rem;
+    }
+
+    p {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+      transition: var(--transition);
+    }
+
+    button {
+      font-family: var(--font-body);
+      cursor: pointer;
+      border: none;
+      background: none;
+      outline: none;
+    }
+
+    /* Container */
+    .container {
+      max-width: var(--container-max);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .container-narrow {
+      max-width: var(--container-narrow);
+      margin: 0 auto;
+      padding: 0 1.5rem;
+    }
+
+    .text-center { text-align: center; }
+
+    /* Component: Buttons */
+    .btn {
+      display: inline-block;
+      padding: 1rem 2.5rem;
+      background-color: var(--primary);
+      color: var(--white);
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      border: 1px solid var(--primary);
+      transition: var(--transition);
+      border-radius: 0px;
+    }
+
+    .btn:hover {
+      background-color: transparent;
+      color: var(--primary);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--border);
+      padding: 0.6rem 1.4rem;
+      font-size: 0.7rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    /* Animations: Standard Scroll Reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .reveal.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Section Spacing */
+    section {
+      padding: 6rem 0;
+      position: relative;
+    }
+
+    .divider {
+      height: 1px;
+      width: 80px;
+      background-color: var(--accent);
+      margin: 0 auto 3rem;
+      opacity: 0.5;
+    }
+
+    /* Music Floating Toggle */
+    .music-toggle {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: var(--white);
+      border: 1px solid var(--border);
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: var(--transition);
+    }
+
+    .music-toggle:hover {
+      transform: scale(1.05);
+    }
+
+    .music-toggle svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--primary);
+    }
+
+    /* ==========================================================================
+       2. HERO / COVER SECTION
+       ========================================================================== */
+    #hero {
+      height: 100vh;
+      min-height: 650px;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      background-color: var(--primary);
+      color: var(--white);
+      overflow: hidden;
+    }
+
+    .hero-bg {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      background-image: url('cover.jpeg');
+      background-size: cover;
+      background-position: center;
+      opacity: 0.55;
+      transform: scale(1.03);
+      transition: transform 10s ease-out;
+    }
+
+    #hero:hover .hero-bg {
+      transform: scale(1);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      text-align: center;
+      padding: 0 1.5rem;
+    }
+
+    .hero-eyebrow {
+      font-size: 0.8rem;
+      letter-spacing: 6px;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.85);
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .hero-title {
+      font-size: clamp(2.8rem, 7vw, 5.5rem);
+      color: var(--white);
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      font-weight: 300;
+    }
+
+    .hero-details {
+      font-size: clamp(0.85rem, 1.5vw, 1rem);
+      letter-spacing: 4px;
+      color: rgba(255, 255, 255, 0.9);
+      text-transform: uppercase;
+      margin-bottom: 3.5rem;
+      font-weight: 300;
+    }
+
+    .hero-btn {
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(255, 255, 255, 0.7);
+      padding: 1rem 2.2rem;
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      transition: var(--transition);
+    }
+
+    .hero-btn:hover {
+      background: var(--white);
+      color: var(--primary);
+      border-color: var(--white);
+    }
+
+    /* ==========================================================================
+       3. COUNTDOWN SECTION
+       ========================================================================== */
+    #countdown {
+      background-color: var(--white);
+      padding: 4rem 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .countdown-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1.5rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .countdown-item {
+      text-align: center;
+    }
+
+    .countdown-number {
+      font-family: var(--font-heading);
+      font-size: clamp(2.5rem, 5vw, 3.8rem);
+      color: var(--primary);
+      line-height: 1;
+      margin-bottom: 0.3rem;
+    }
+
+    .countdown-label {
+      font-size: 0.65rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       4. OUR STORY
+       ========================================================================== */
+    #our-story {
+      background-color: var(--secondary);
+    }
+
+    .story-card {
+      background: var(--white);
+      padding: 4rem 3rem;
+      border: 1px solid var(--border);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.02);
+      text-align: center;
+    }
+
+    .story-body {
+      margin-top: 1.5rem;
+    }
+
+    .story-body p {
+      margin-bottom: 1.5rem;
+      font-size: 1rem;
+      line-height: 1.9;
+    }
+
+    /* ==========================================================================
+       5. THE DAY / WEDDING DETAILS
+       ========================================================================== */
+    #details {
+      background-color: var(--white);
+    }
+
+    .venues-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2.5rem;
+      margin-top: 2rem;
+    }
+
+    .venue-card {
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .venue-img-wrap {
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .venue-img-wrap img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+    }
+
+    .venue-card:hover .venue-img-wrap img {
+      transform: scale(1.04);
+    }
+
+    .venue-info {
+      padding: 2.5rem 2rem;
+      text-align: center;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+
+    .venue-type {
+      font-size: 0.7rem;
+      letter-spacing: 3px;
+      color: var(--accent);
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .venue-name {
+      font-size: 1.8rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .venue-meta {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    .venue-desc {
+      font-size: 0.9rem;
+      margin-bottom: 2rem;
+    }
+
+    /* ==========================================================================
+       6. SCHEDULE / TIMELINE
+       ========================================================================== */
+    #schedule {
+      background-color: var(--secondary);
+    }
+
+    .timeline {
+      position: relative;
+      max-width: 650px;
+      margin: 0 auto;
+      padding: 1rem 0;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 50%;
+      width: 1px;
+      background: var(--border);
+      transform: translateX(-50%);
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 2.5rem;
+      width: 100%;
+      display: flex;
+    }
+
+    .timeline-item:nth-child(odd) {
+      justify-content: flex-start;
+    }
+
+    .timeline-item:nth-child(even) {
+      justify-content: flex-end;
+    }
+
+    .timeline-content {
+      width: 45%;
+      background: var(--white);
+      padding: 1.5rem;
+      border: 1px solid var(--border);
+      position: relative;
+    }
+
+    .timeline-item:nth-child(odd) .timeline-content {
+      text-align: right;
+    }
+
+    .timeline-item:nth-child(even) .timeline-content {
+      text-align: left;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      top: 20px;
+      left: 50%;
+      width: 9px;
+      height: 9px;
+      background: var(--accent);
+      border-radius: 50%;
+      transform: translateX(-50%);
+      z-index: 2;
+    }
+
+    .timeline-time {
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      color: var(--accent);
+      font-weight: 500;
+      margin-bottom: 0.2rem;
+    }
+
+    .timeline-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.4rem;
+    }
+
+    .timeline-desc {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* ==========================================================================
+       7. ENTOURAGE
+       ========================================================================== */
+    #entourage {
+      background-color: var(--white);
+    }
+
+    .entourage-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem 2rem;
+      margin-top: 1rem;
+    }
+
+    .entourage-group {
+      text-align: center;
+    }
+
+    .entourage-role {
+      font-size: 0.75rem;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1rem;
+      font-weight: 500;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.5rem;
+      display: inline-block;
+    }
+
+    .entourage-name {
+      font-family: var(--font-heading);
+      font-size: 1.35rem;
+      color: var(--primary);
+      margin-bottom: 0.2rem;
+    }
+
+    .entourage-sub {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ==========================================================================
+       8. GALLERY
+       ========================================================================== */
+    #gallery {
+      background-color: var(--secondary);
+    }
+
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.25rem;
+    }
+
+    .gallery-item {
+      position: relative;
+      overflow: hidden;
+      background: var(--border);
+      aspect-ratio: 4/5;
+    }
+
+    .gallery-item img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.6s ease;
+      display: block;
+    }
+
+    .gallery-item:hover img {
+      transform: scale(1.05);
+    }
+
+    /* ==========================================================================
+       9. DRESS CODE & DETAILS
+       ========================================================================== */
+    #dress-code {
+      background-color: var(--white);
+    }
+
+    .details-box {
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      padding: 3.5rem 2.5rem;
+      text-align: center;
+    }
+
+    .dress-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .dress-card h4 {
+      font-size: 1.2rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    /* FAQ Accordion */
+    .faq-wrapper {
+      margin-top: 3rem;
+      text-align: left;
+    }
+
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-btn {
+      width: 100%;
+      padding: 1.25rem 0;
+      text-align: left;
+      font-family: var(--font-heading);
+      font-size: 1.25rem;
+      color: var(--primary);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .faq-btn span {
+      font-family: var(--font-body);
+      font-size: 1.2rem;
+      color: var(--accent);
+      transition: transform 0.3s ease;
+    }
+
+    .faq-item.active .faq-btn span {
+      transform: rotate(45deg);
+    }
+
+    .faq-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease, padding 0.4s ease;
+    }
+
+    .faq-item.active .faq-content {
+      max-height: 200px;
+      padding-bottom: 1.25rem;
+    }
+
+    /* ==========================================================================
+       10. GIFTS / REGISTRY
+       ========================================================================== */
+    #gifts {
+      background-color: var(--secondary);
+    }
+
+    .gifts-card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      padding: 3.5rem 2rem;
+      text-align: center;
+    }
+
+    /* ==========================================================================
+       11. RSVP
+       ========================================================================== */
+    #rsvp {
+      background-color: var(--white);
+    }
+
+    .rsvp-form-container {
+      background: var(--secondary);
+      border: 1px solid var(--border);
+      padding: 3.5rem 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+      text-align: left;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 0.75rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-muted);
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-control {
+      width: 100%;
+      padding: 0.9rem 1rem;
+      border: 1px solid var(--border);
+      background: var(--white);
+      font-family: var(--font-body);
+      font-size: 0.9rem;
+      color: var(--primary);
+      outline: none;
+      transition: var(--transition);
+    }
+
+    .form-control:focus {
+      border-color: var(--primary);
+    }
+
+    select.form-control {
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%202C2C2C' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 1em;
+    }
+
+    .rsvp-success {
+      display: none;
+      text-align: center;
+      padding: 2rem 0;
+    }
+
+    /* ==========================================================================
+       12. FOOTER
+       ========================================================================== */
+    footer {
+      background-color: var(--primary);
+      color: var(--white);
+      padding: 4rem 0 3rem;
+      text-align: center;
+    }
+
+    footer h2 {
+      color: var(--white);
+      font-size: 2.2rem;
+      letter-spacing: 3px;
+      margin-bottom: 0.5rem;
+    }
+
+    footer p {
+      color: rgba(255, 255, 255, 0.6);
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+    }
+
+    /* ==========================================================================
+       13. RESPONSIVE BREAKPOINTS
+       ========================================================================== */
+    @media (max-width: 992px) {
+      .gallery-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 768px) {
+      section { padding: 4rem 0; }
+      
+      .venues-grid, .dress-grid, .entourage-grid {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+
+      .story-card, .details-box, .rsvp-form-container, .gifts-card {
+        padding: 2.5rem 1.5rem;
+      }
+
+      /* Mobile Timeline Shift */
+      .timeline::before { left: 15px; }
+      .timeline-item { justify-content: flex-start !important; }
+      .timeline-content {
+        width: calc(100% - 40px);
+        margin-left: 40px;
+        text-align: left !important;
+      }
+      .timeline-dot { left: 15px; }
+    }
+
+    @media (max-width: 480px) {
+      .gallery-grid {
+        grid-template-columns: 1fr;
+      }
+      .countdown-grid {
+        gap: 0.5rem;
+      }
+      .countdown-number {
+        font-size: 2rem;
+      }
+      .hero-title {
+        font-size: 2.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Audio Element -->
+  <audio id="bg-music" loop preload="auto">
+    <source src="song.mp3" type="audio/mpeg">
+  </audio>
+
+  <!-- Audio Toggle Button -->
+  <button class="music-toggle" id="music-btn" aria-label="Toggle Audio">
+    <svg id="music-icon-play" viewBox="0 0 24 24">
+      <path d="M12 3v10.55c-.59-.34-1.27-.55-2-.55-2.21 0-4 1.79-4 4s1.79 4 4 4 4-1.79 4-4V7h4V3h-6z"/>
+    </svg>
+  </button>
+
+  <!-- ==========================================================================
+     HERO / COVER SECTION
+     ========================================================================== -->
+  <section id="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-content">
+      <span class="hero-eyebrow">An Invitation to Celebrate</span>
+      <h1 class="hero-title">Elena & Adrian</h1>
+      <div class="hero-details">31 January 2028 &nbsp;·&nbsp; Manila</div>
+      <button class="hero-btn" onclick="scrollToInvitation()">View Invitation &darr;</button>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     COUNTDOWN SECTION
+     ========================================================================== -->
+  <section id="countdown">
+    <div class="container text-center">
+      <div class="countdown-grid reveal">
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-days">00</div>
+          <div class="countdown-label">Days</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-hours">00</div>
+          <div class="countdown-label">Hours</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-minutes">00</div>
+          <div class="countdown-label">Minutes</div>
+        </div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="cd-seconds">00</div>
+          <div class="countdown-label">Seconds</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     OUR STORY SECTION
+     ========================================================================== -->
+  <section id="our-story">
+    <div class="container-narrow">
+      <div class="story-card reveal">
+        <span class="eyebrow">A Little Story About Us</span>
+        <h2 class="section-title">Our Story</h2>
+        <div class="divider"></div>
+        <div class="story-body">
+          <p>We met over iced coffee on an ordinary afternoon in Manila. What was supposed to be a quick coffee date turned into hours of conversation, laughter, and the subtle realization that our lives were changing forever.</p>
+          <div class="script" style="margin: 1.5rem 0;">we became us.</div>
+          <p>Through all the shared journeys, quiet moments, and growth over the years, our love grew stronger. Now, we are ready to make a lifelong promise to each other surrounded by the people we cherish most.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     THE DAY / WEDDING DETAILS
+     ========================================================================== -->
+  <section id="details">
+    <div class="container text-center">
+      <span class="eyebrow reveal">When & Where</span>
+      <h2 class="section-title reveal">The Wedding Day</h2>
+      <p class="section-subtitle reveal">Two places. One promise. A day we will always remember.</p>
+
+      <div class="venues-grid">
+        <!-- Ceremony Card -->
+        <div class="venue-card reveal">
+          <div class="venue-img-wrap">
+            <img src="church.jpeg" alt="San Sebastian Church">
+          </div>
+          <div class="venue-info">
+            <div>
+              <div class="venue-type">The Ceremony</div>
+              <h3 class="venue-name">San Sebastian Church</h3>
+              <div class="venue-meta">Tuesday, 31 January 2028 &nbsp;|&nbsp; 3:00 PM</div>
+              <p class="venue-desc">Plaza del Carmen, Quiapo, Manila, Metro Manila</p>
+            </div>
+            <div>
+              <a href="https://maps.google.com/?q=San+Sebastian+Church+Manila" target="_blank" class="btn-outline">Get Directions</a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Reception Card -->
+        <div class="venue-card reveal">
+          <div class="venue-img-wrap">
+            <img src="hotel.jpg" alt="Manila Hotel">
+          </div>
+          <div class="venue-info">
+            <div>
+              <div class="venue-type">The Reception</div>
+              <h3 class="venue-name">Manila Hotel</h3>
+              <div class="venue-meta">Tuesday, 31 January 2028 &nbsp;|&nbsp; 6:00 PM</div>
+              <p class="venue-desc">One Rizal Park, Ermita, Manila, Metro Manila</p>
+            </div>
+            <div>
+              <a href="https://maps.google.com/?q=The+Manila+Hotel+Manila" target="_blank" class="btn-outline">Get Directions</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     WEDDING SCHEDULE
+     ========================================================================== -->
+  <section id="schedule">
+    <div class="container text-center">
+      <span class="eyebrow reveal">Order of Events</span>
+      <h2 class="section-title reveal">The Program</h2>
+      <div class="divider reveal"></div>
+
+      <div class="timeline">
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">5:00 PM</div>
+            <h3 class="timeline-title">Cocktails & Registration</h3>
+            <div class="timeline-desc">Welcome drinks and light acoustic music as guests arrive and settle in.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">6:00 PM</div>
+            <h3 class="timeline-title">Start of Program</h3>
+            <div class="timeline-desc">Formal opening of the evening's festivities by our host.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">6:15 PM</div>
+            <h3 class="timeline-title">Grand Entrance</h3>
+            <div class="timeline-desc">Welcoming the newlyweds as they enter as husband and wife.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">6:45 PM</div>
+            <h3 class="timeline-title">First Dance</h3>
+            <div class="timeline-desc">Elena and Adrian take the floor for their first dance.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">7:15 PM</div>
+            <h3 class="timeline-title">Dinner & Speeches</h3>
+            <div class="timeline-desc">A dinner served alongside messages and toasts from our families.</div>
+          </div>
+        </div>
+
+        <div class="timeline-item reveal">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <div class="timeline-time">8:30 PM</div>
+            <h3 class="timeline-title">Socials & Party</h3>
+            <div class="timeline-desc">The dance floor opens! Music, drinks, and celebration to close the night.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     ENTOURAGE
+     ========================================================================== -->
+  <section id="entourage">
+    <div class="container text-center">
+      <span class="eyebrow reveal">With Our Beloved Families</span>
+      <h2 class="section-title reveal">The Entourage</h2>
+      <p class="section-subtitle reveal">Standing beside us as we take our vows.</p>
+
+      <div class="entourage-grid reveal">
+        <div class="entourage-group">
+          <div class="entourage-role">Parents of the Bride</div>
+          <div class="entourage-name">Mr. Roberto Santos</div>
+          <div class="entourage-name">Mrs. Carmen Santos</div>
+        </div>
+
+        <div class="entourage-group">
+          <div class="entourage-role">Parents of the Groom</div>
+          <div class="entourage-name">Mr. Fernando Reyes</div>
+          <div class="entourage-name">Mrs. Alicia Reyes</div>
+        </div>
+
+        <div class="entourage-group">
+          <div class="entourage-role">Maid of Honor</div>
+          <div class="entourage-name">Sophia Santos</div>
+        </div>
+
+        <div class="entourage-group">
+          <div class="entourage-role">Best Man</div>
+          <div class="entourage-name">Marco Reyes</div>
+        </div>
+
+        <div class="entourage-group">
+          <div class="entourage-role">Principal Sponsors</div>
+          <div class="entourage-name">Mr. Ricardo Cruz & Mrs. Elena Cruz</div>
+          <div class="entourage-name">Mr. Gabriel Gomez & Mrs. Teresa Gomez</div>
+        </div>
+
+        <div class="entourage-group">
+          <div class="entourage-role">Bridesmaids & Groomsmen</div>
+          <div class="entourage-name">Isabella Santos & Lucas Torres</div>
+          <div class="entourage-name">Clara Mendoza & Mateo Ramos</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     GALLERY SECTION
+     ========================================================================== -->
+  <section id="gallery">
+    <div class="container text-center">
+      <span class="eyebrow reveal">Captured Moments</span>
+      <h2 class="section-title reveal">Gallery</h2>
+      <div class="divider reveal"></div>
+
+      <div class="gallery-grid">
+        <div class="gallery-item reveal"><img src="photo1.jpeg" alt="Moment 1"></div>
+        <div class="gallery-item reveal"><img src="photo2.jpeg" alt="Moment 2"></div>
+        <div class="gallery-item reveal"><img src="photo3.jpeg" alt="Moment 3"></div>
+        <div class="gallery-item reveal"><img src="photo4.jpeg" alt="Moment 4"></div>
+        <div class="gallery-item reveal"><img src="photo5.jpeg" alt="Moment 5"></div>
+        <div class="gallery-item reveal"><img src="photo6.jpeg" alt="Moment 6"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     DRESS CODE & FAQ
+     ========================================================================== -->
+  <section id="dress-code">
+    <div class="container-narrow text-center">
+      <div class="details-box reveal">
+        <span class="eyebrow">Guest Information</span>
+        <h2 class="section-title">Dress Code & Details</h2>
+        <div class="divider"></div>
+
+        <div class="dress-grid">
+          <div class="dress-card">
+            <h4>Ladies</h4>
+            <p>Black, white, ivory, or monochrome formal wear.</p>
+          </div>
+          <div class="dress-card">
+            <h4>Gentlemen</h4>
+            <p>Black suit, tuxedo, white shirt, or classic monochrome formal wear.</p>
+          </div>
+        </div>
+
+        <div class="faq-wrapper">
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Is there available parking at the venues?
+              <span>+</span>
+            </button>
+            <div class="faq-content">
+              <p>Yes, street and courtyard parking is available at San Sebastian Church. For the reception, Manila Hotel provides valet services and guest garage parking.</p>
+            </div>
+          </div>
+
+          <div class="faq-item">
+            <button class="faq-btn" onclick="toggleFaq(this)">
+              Can I request special dietary accommodations?
+              <span>+</span>
+            </button>
+            <div class="faq-content">
+              <p>Please specify any food allergies or dietary restrictions in your RSVP response so we can inform the caterers ahead of time.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     GIFTS / REGISTRY
+     ========================================================================== -->
+  <section id="gifts">
+    <div class="container-narrow text-center">
+      <div class="gifts-card reveal">
+        <span class="eyebrow">With Heartfelt Thanks</span>
+        <h2 class="section-title">Registry & Gifts</h2>
+        <div class="divider"></div>
+        <p>Your presence at our wedding is the greatest gift of all. However, should you wish to honor us with a gift, a monetary contribution towards our new home and future together would be sincerely appreciated.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     RSVP SECTION
+     ========================================================================== -->
+  <section id="rsvp">
+    <div class="container-narrow text-center">
+      <span class="eyebrow reveal">Join Our Celebration</span>
+      <h2 class="section-title reveal">RSVP</h2>
+      <p class="section-subtitle reveal">Please confirm your attendance by December 1, 2027.</p>
+
+      <div class="rsvp-form-container reveal">
+        <form id="rsvp-form" onsubmit="handleRSVP(event)">
+          <div class="form-group">
+            <label>Your Full Name</label>
+            <input type="text" class="form-control" required placeholder="Jane Doe">
+          </div>
+
+          <div class="form-group">
+            <label>Will you be attending?</label>
+            <select class="form-control" required>
+              <option value="yes">Happily, yes!</option>
+              <option value="no">Regretfully, no.</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Number of Guests</label>
+            <select class="form-control" required>
+              <option value="1">1 Person</option>
+              <option value="2">2 Persons</option>
+            </select>
+          </div>
+
+          <button type="submit" class="btn" style="width: 100%; margin-top: 1rem;">Confirm RSVP</button>
+        </form>
+
+        <div id="rsvp-success" class="rsvp-success">
+          <h3 class="serif" style="font-size: 2rem; margin-bottom: 0.5rem;">Thank You!</h3>
+          <p>Your RSVP response has been safely recorded. We look forward to celebrating with you!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+     FOOTER
+     ========================================================================== -->
+  <footer>
+    <div class="container">
+      <h2>Elena & Adrian</h2>
+      <p>31 JANUARY 2028 &nbsp;·&nbsp; MANILA</p>
+    </div>
+  </footer>
+
+  <!-- ==========================================================================
+     JAVASCRIPT INTERACTION
+     ========================================================================== -->
+  <script>
+    /* Audio Controls */
+    const music = document.getElementById('bg-music');
+    const musicBtn = document.getElementById('music-btn');
+    let isPlaying = false;
+
+    function toggleAudio() {
+      if (isPlaying) {
+        music.pause();
+        isPlaying = false;
+        musicBtn.style.opacity = '0.6';
+      } else {
+        music.play().then(() => {
+          isPlaying = true;
+          musicBtn.style.opacity = '1';
+        }).catch(err => console.log('Audio blocked:', err));
+      }
+    }
+
+    musicBtn.addEventListener('click', toggleAudio);
+
+    /* Smooth Navigation */
+    function scrollToInvitation() {
+      document.getElementById('countdown').scrollIntoView({ behavior: 'smooth' });
+      if (!isPlaying) {
+        toggleAudio();
+      }
+    }
+
+    /* Dynamic Countdown Timer */
+    function initCountdown() {
+      const targetDate = new Date('January 31, 2028 15:00:00').getTime();
+
+      function update() {
+        const now = new Date().getTime();
+        const diff = targetDate - now;
+
+        if (diff <= 0) {
+          document.getElementById('cd-days').innerText = '00';
+          document.getElementById('cd-hours').innerText = '00';
+          document.getElementById('cd-minutes').innerText = '00';
+          document.getElementById('cd-seconds').innerText = '00';
+          return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+        document.getElementById('cd-days').innerText = String(days).padStart(2, '0');
+        document.getElementById('cd-hours').innerText = String(hours).padStart(2, '0');
+        document.getElementById('cd-minutes').innerText = String(minutes).padStart(2, '0');
+        document.getElementById('cd-seconds').innerText = String(seconds).padStart(2, '0');
+      }
+
+      update();
+      setInterval(update, 1000);
+    }
+
+    /* Scroll Reveal Observer */
+    function initScrollObserver() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('active');
+          }
+        });
+      }, { threshold: 0.1 });
+
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+    }
+
+    /* FAQ Accordion Toggle */
+    function toggleFaq(btn) {
+      const item = btn.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('active'));
+      
+      if (!isActive) {
+        item.classList.add('active');
+      }
+    }
+
+    /* RSVP Form Mock Handler */
+    function handleRSVP(e) {
+      e.preventDefault();
+      document.getElementById('rsvp-form').style.display = 'none';
+      document.getElementById('rsvp-success').style.display = 'block';
+    }
+
+    /* Lifecycle Init */
+    document.addEventListener('DOMContentLoaded', () => {
+      initCountdown();
+      initScrollObserver();
+    });
+  </script>
+</body>
+</html>
